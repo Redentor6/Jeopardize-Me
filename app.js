@@ -11,10 +11,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 //Configure views
 app.set('views', path.join(__dirname, 'views'));
-app.set('views engine', 'ejs');
+app.set('view engine', 'ejs');
 
 //Logger set up
 app.use(logger('dev'));
+
+app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({
 	extended: false,
@@ -24,7 +26,10 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 //Routes
-app.use('/jeopardizeme-router', jeopardizemeRouter);
+app.get('/', (req, res) => {
+	res.render('./index')
+})
+app.use('/jeopardize', jeopardizemeRouter);
 
 
 
