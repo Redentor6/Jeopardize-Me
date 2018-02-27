@@ -8,3 +8,6 @@ CREATE TABLE questions (
   answer VARCHAR(255),
   value INTEGER,
 );
+
+
+CREATE INDEX ON questions (value);
