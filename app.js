@@ -29,14 +29,8 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res) => {
 	res.render('./index')
 })
+
 app.use('/jeopardize', jeopardizemeRouter);
-
-
-
-
-
-
-
 
 
 app.listen(PORT, () => {

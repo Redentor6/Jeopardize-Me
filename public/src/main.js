@@ -33,7 +33,7 @@ $(()=>{
     // modify
     // append
     questionArray.forEach(question => {
-      let $form = $("<form method='post' action='post'>")
+      let $form = $("<form method='post' action='/jeopardize'>")
       let inputQuestion = $("<input name='question'>").val(question.question);
       let inputAnswer = $("<input name='answer' type='hidden'>").val(question.answer);
       let inputScore = $("<input name='score'>").val(question.value);
