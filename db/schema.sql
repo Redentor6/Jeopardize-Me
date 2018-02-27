@@ -1,16 +1,10 @@
--- CREATE TABLE questions(
--- 	id SERIAL PRIMARY KEY,
--- 	question VARCHAR(255),
--- 	answer VARCHAR(255),
--- 	category TEXT
--- 	value INTEGER
--- 	);
+\c jeopardize_db;
+DROP TABLE IF EXISTS quotes;
 
-CREATE TABLE Questions (
+
+CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
   question VARCHAR(255),
   answer VARCHAR(255),
-  -- category TEXT,
   value INTEGER,
-  date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
