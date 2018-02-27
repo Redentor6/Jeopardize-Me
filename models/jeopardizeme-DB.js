@@ -5,7 +5,7 @@ module.exports = {
 	save: function(question) {
 		return db.one(`
 		INSERT INTO questions (question, answer, value)
-		VALUE $[question], $[answer], $[value]
+		VALUES ($[question], $[answer], $[value])
 		RETURNING *
 		`, question);
 
@@ -19,9 +19,9 @@ module.exports = {
 }
 
 module.exports.save({
-  question: "",
-  answer: "",
-  category: 'INTEGER'
+  question: "Hey",
+  answer: "Yo",
+  value: '100'
 })
 .then(result => console.log(result))
-.catch(err => console.log(error.message));
+.catch(err => console.log(err.message));
