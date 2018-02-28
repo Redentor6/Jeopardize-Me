@@ -1,6 +1,7 @@
 const pgp = require('pg-promise')();
 const dbConfig = require('../config/dbConfig');
 const db = pgp(dbConfig);  // db connection
+
 module.exports = {
 	save: function(question) {
 		return db.one(`
@@ -10,15 +11,22 @@ module.exports = {
 		`, question);
 
 	},
-	delete: function() {
+	//delete: function(id) {
+	//	return db.none(`
+      //	DELETE
+        //FROM questions
+       	//WHERE id = $1
+    	//`, id);
+  //},
 
-	},
+	//},
+
 	findAll: function() {
-		return db.many(
-			`SELECT * FROM questions
+		return db.many(`
+			SELECT * FROM questions
 			ORDER BY value
 			`);
-	}
+	},
 }
 
 // module.exports.save({
