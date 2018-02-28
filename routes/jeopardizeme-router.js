@@ -1,12 +1,12 @@
 const express = require('express');
 
-const jeopardizemeController = ('../controllers/jeopardizemeController');
+const jeopardizemeController = require('../controllers/jeopardizeme-controller');
 
 const viewsController = require('../controllers/views-controller.js');
 
 const jeopardizemedb = require('../models/jeopardizeme-DB')
-	console.log('im here');
-	console.log(jeopardizemedb)
+	// console.log('im here');
+	// console.log(jeopardizemedb)
 
 const jeopardizemeRouter = express.Router();
 
@@ -37,7 +37,11 @@ jeopardizemeRouter.post('/', (req, res) => {
 	})
 	
 })
-
+jeopardizemeRouter.delete('/:id', jeopardizemeController.delete);
+// jeopardizemeRouter.delete('/:id', (req, res) => jeopardizemedb.destroy(req.params.id))
+// jeopardizemeRouter.delete('/:id', jeopardizemeController.destroy, (req, res) => {
+// 	console.log("this is req:", req);
+// })
 
 
 

@@ -3,7 +3,7 @@ const dbConfig = require('../config/dbConfig');
 const db = pgp(dbConfig);  // db connection
 
 module.exports = {
-	save: function(question) {
+	save(question) {
 		return db.one(`
 		INSERT INTO questions (question, answer, value)
 		VALUES ($[question], $[answer], $[value])
@@ -11,17 +11,17 @@ module.exports = {
 		`, question);
 
 	},
-	//delete: function(id) {
-	//	return db.none(`
-      //	DELETE
-        //FROM questions
-       	//WHERE id = $1
-    	//`, id);
-  //},
+	
+	destroy(id) {
+		console.log('inside destroy in model')
+		return db.none(`
+      	DELETE
+        FROM questions
+       	WHERE id = $1
+    	`, id);
+  },
 
-	//},
-
-	findAll: function() {
+	findAll() {
 		return db.many(`
 			SELECT * FROM questions
 			ORDER BY value

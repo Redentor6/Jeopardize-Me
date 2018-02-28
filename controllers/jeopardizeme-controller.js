@@ -1,10 +1,8 @@
 const jeopardizemeDB = require('../models/jeopardizeme-DB');
 
+const jeopardizemeController = {};
 
-
-module.exports = {
-
-	  create(req, res, next) {
+jeopardizemeController.create = (req, res, next) => {
     console.log(req.body, 'body');
     jeopardizemeDB.save(req.body)
       .then((question) => {
@@ -12,9 +10,9 @@ module.exports = {
         next();
       })
       .catch(err => next(err));
-  },
+  }
 
- index(req, res) {
+jeopardizemeController.index = (req, res) => {
     // console.log(req.body, 'body');
     jeopardizemeDB.findAll()
       .then((question) => {
@@ -26,7 +24,16 @@ module.exports = {
       .catch(err => next(err));
 
 	}
-}
+
+jeopardizemeController.delete = (req, res) => {
+		// console.log("inside delete function")
+		jeopardizemeDB.destroy(req.params.id)
+			.then(() => {
+				res.redirect('/')
+			});
+	}
+
+module.exports = jeopardizemeController;
 
 
 

@@ -7,7 +7,9 @@ search(req, res) {
 showAddForm(req, res) {
 res.render('jeopardizeme/questions-add');
 },
-
+//handleDelete(req, res) {
+  //  res.redirect('/jeopardizeme');
+//  },
 
 }; 
 
