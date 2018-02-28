@@ -5,6 +5,7 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const jeopardizemeRouter = require('./routes/jeopardizeme-router');
+const jeopardizemeController = require('./controllers/jeopardizeme-controller');
 //Port
 const PORT = process.env.PORT || 3000;
 //Initialize express
@@ -26,10 +27,11 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 //Routes
-app.get('/', (req, res) => {
-	res.render('./index')
-})
+// app.get('/', (req, res) => {
+// 	res.render('./index')
+// })
 
+app.get('/', jeopardizemeController.index);
 app.use('/jeopardize', jeopardizemeRouter);
 
 

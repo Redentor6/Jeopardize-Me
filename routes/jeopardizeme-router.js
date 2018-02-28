@@ -29,7 +29,7 @@ jeopardizemeRouter.post('/', (req, res) => {
 	jeopardizemedb.save(req.body)
 	.then(results => {
 		console.log(results)
-		res.redirect("viewquestions")
+		res.redirect("/")
 	})
 	.catch(err => {
 		console.log(err.message)

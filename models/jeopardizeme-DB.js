@@ -13,15 +13,18 @@ module.exports = {
 	delete: function() {
 
 	},
-	showAll: function() {
-
+	findAll: function() {
+		return db.many(
+			`SELECT * FROM questions
+			ORDER BY value
+			`);
 	}
 }
 
-module.exports.save({
-  question: "Hey",
-  answer: "Yo",
-  value: '100'
-})
-.then(result => console.log(result))
-.catch(err => console.log(err.message));
+// module.exports.save({
+//   question: "Hey",
+//   answer: "Yo",
+//   value: '100'
+// })
+// .then(result => console.log(result))
+// .catch(err => console.log(err.message));

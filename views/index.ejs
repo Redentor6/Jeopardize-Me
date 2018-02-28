@@ -3,3 +3,17 @@
    <button>Get Questions!</button>
    <a href="../jeopardize/questions-add"> <button type="submit">create question</button></a>
 <% include ./partials/footer %>
+
+
+
+
+
+
+
+
+
+<% for (let tacos of data) { %>
+  <ul>
+      <b><%= tacos.question %></b>
+  </ul>
+<% } %>
