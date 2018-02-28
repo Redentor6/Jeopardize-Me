@@ -36,9 +36,9 @@ $(()=>{
       let $form = $("<form method='post' action='/jeopardize'>")
       let inputQuestion = $("<input name='question'>").val(question.question);
       let inputAnswer = $("<input name='answer' type='hidden'>").val(question.answer);
-      let inputScore = $("<input name='score'>").val(question.value);
+      let inputValue = $("<input name='value'>").val(question.value);
       let button = $("<input type='submit'>add</input>")
-      $form.append(inputQuestion, inputAnswer, inputScore, button);
+      $form.append(inputQuestion, inputAnswer, inputValue, button);
       // $('body').append("<h1> " + question.question + "</h1>")
       // $('body').append("<h2> " + question.answer + "</h2>")
       // $('body').append("<h3> " + question.value + "</h3>")
@@ -48,4 +48,4 @@ $(()=>{
   }
 
 
-})
+});
