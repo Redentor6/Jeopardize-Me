@@ -15,7 +15,7 @@ $(()=>{
     })
   
 
-    $.ajax({
+   $.ajax({
       url: `http://jservice.io/api/category?id=11559`,
       method: 'GET',
       success: (data)=>{
@@ -25,6 +25,7 @@ $(()=>{
       }
     })
   })
+
 
   printQuestions = data => {
     questionArray = data["clues"];

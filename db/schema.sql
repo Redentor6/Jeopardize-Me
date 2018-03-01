@@ -1,5 +1,7 @@
+
+
 \c jeopardize_db;
-DROP TABLE IF EXISTS quotes;
+DROP TABLE IF EXISTS questions;
 
 
 CREATE TABLE questions (
