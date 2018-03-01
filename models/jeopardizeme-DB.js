@@ -34,22 +34,30 @@ module.exports = {
       `, question);
   },
 
-
-
-	findAll() {
+		findAll() {
 		// db.any is for 0 or many results, in case DB is empty
 		return db.any(`
-			SELECT * FROM questions
-			ORDER BY value
+			SELECT questions.id as question_id, questions.question, questions.answer, questions.value,
+			categories.category 
+			FROM questions
+			INNER JOIN categories on questions.category_id=categories.id
+			ORDER BY questions.value
 			`);
 	},
 
 	findOne(id) {
-		return db.one(`SELECT * FROM questions WHERE id= $1`, id);
+		return db.one(`
+			SELECT * 
+			FROM questions 
+			WHERE id= $1`, id);
 	},
 
 	findCategories() {
-		return db.one(`SELECT * FROM categories ORDER BY id RETURN *`, id);
+		return db.one(`
+			SELECT * 
+			FROM categories 
+			ORDER BY id 
+			RETURN *`, id);
 	}
 }
 
