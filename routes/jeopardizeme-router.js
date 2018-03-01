@@ -19,9 +19,18 @@ jeopardizemeRouter.get('/questions-add', (req, res) => {
 	res.render('./jeopardizeme/questions-add')
 })
 
-jeopardizemeRouter.get('/', (req, res) => {
-	res.render('')
-})
+// show the edit view with prepopulated values
+jeopardizemeRouter.get('/questions-edit/:id', jeopardizemeController.findOne); //new
+// route for PUT to update those shown values
+jeopardizemeRouter.put('/edit/:id', jeopardizemeController.update); //new
+// jeopardizemeRouter.put('/edit/:id', (req, res) => {
+// 	// res.send('this works!!')
+// });
+
+
+// jeopardizemeRouter.get('/', (req, res) => {
+// 	res.render('')
+// })
 // jeopardizemeRouter.get('/questions-add', jeopardizemeController.makeBlankQuestion, views.showAddForm, views.show404);
 
 jeopardizemeRouter.post('/', (req, res) => {

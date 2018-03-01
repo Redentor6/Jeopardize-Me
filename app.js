@@ -34,15 +34,7 @@ app.use(methodOverride('_method'));
 app.get('/', jeopardizemeController.index);
 app.use('/jeopardize', jeopardizemeRouter);
 
-app.get('/', (req, res) => {
-  res.render('index', {
-    message:       'Hello world!',
-    documentTitle: 'This is WDI quotes!!',
-    subTitle:      'Read some of the coolest quotes around.',
-    showMore:      false,
-    quoteAuthors:  ['Unknown', 'Yoda', 'CS Lewis', 'Frank Chimero', 'Pablo Picasso', 'Italo Calvino', 'T. S. Eliot', 'Samuel Beckett', 'Hunter S. Thompson'],
-  });
-});
+
 
 app.listen(PORT, () => {
 	console.log(`We are live on ${PORT}, in ${app.get('env')} mode`);
