@@ -5,11 +5,16 @@ search(req, res) {
 },
 
 showAddForm(req, res) {
-res.render('jeopardizeme/questions-add');
+res.render('./jeopardizeme/questions-add');
 },
-//handleDelete(req, res) {
-  //  res.redirect('/jeopardizeme');
-//  },
+showEditForm(req, res) {
+	res.render('./jeopardizeme/questions-edit', {
+		data: res.locals.question
+	})
 
-}; 
+	},
+showRedirect(req, res){
+	res.redirect('/')
+} 
+}
 

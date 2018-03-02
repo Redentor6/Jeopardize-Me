@@ -2,16 +2,20 @@
 	<h1>Jeopardize Me: Bond/Dot Com Edition</h1>
 
    <button>Get Questions!</button>
-   <a href="../jeopardize/questions-add"> <button type="submit">create question</button></a>
+   <a href="/jeopardize/questions-add"> <button type="submit">create question</button></a>
    <% for (let tacos of data) { %>
   <ul>
       <b><%= tacos.question %></b>
       <form action="/jeopardize/<%=tacos.question_id%>?_method=DELETE" method="POST">
       <input type="Submit" value="Delete"/>
       </form>
-      <a href="jeopardize/questions-edit/<%=tacos.id%>"><p>edit</p></a>
+      <a href="jeopardize/questions-edit/<%=tacos.question_id%>"><p>edit</p></a>
   </ul>
 <% } %>
+
+<% data.forEach (el => { %>
+  <%= el.question_id %>
+<%}) %>
 
 
 <% include ./partials/footer %>

@@ -37,12 +37,13 @@ jeopardizemeController.delete = (req, res) => {
 			})
 	}
 
-jeopardizemeController.findOne = (req, res) => {
+jeopardizemeController.findOne = (req, res, next) => {
 	console.log('inside findOne');
-	jeopardizemeDB.findOne(req.params.id)
+	jeopardizemeDB.findById(req.params.id)
 		.then( question => {
-			console.log('question found', question);
-			res.render('./jeopardizeme/questions-edit', {data: question})
+			// console.log('question found', question);
+			res.locals.question = question
+			next()
 		})
 		.catch( err => {
 			console.log(err)
@@ -50,19 +51,25 @@ jeopardizemeController.findOne = (req, res) => {
 		})
 }
 
-jeopardizemeController.update = (req, res) => {
+jeopardizemeController.update = (req, res, next) => {
 	// connect it to the MODEL changeone
 	console.log('--> inside controller update', req.body)
-	jeopardizemeDB.update({
-		question: req.body.question,
-		answer: req.body.answer,
-		value: req.body.value,
-		id: req.body.id
-	})
-	.then(question=>{
-		console.log('did this work?', question);
+	jeopardizemeDB.update(req.body)
+	// 	question: req.body.question,
+	// 	answer: req.body.answer,
+	// 	value: req.body.value,
+	// 	category: req.body.category,
+	// 	id: req.body.id
+	// })
+	.then(question => {
+		// console.log('did this work?', question);
 		// res.render('./jeopardizeme/questions-edit', { data: question})
-		res.redirect('/');
+		res.locals.question = question
+		
+		console.log('herhehrehreer', res.locals.question)
+
+		next()
+
 	})
 	.catch( err => {
 		console.log('this failed');

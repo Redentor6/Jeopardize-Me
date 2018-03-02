@@ -28,11 +28,9 @@ module.exports = {
       SET
       question = $/question/,
       answer = $/answer/,
-      value = $/value/,
-      category_id = $/category_id/,
+      value = $/value/
       WHERE id = $/id/
-      RETURNING *;
-      `, question);
+      RETURNING *`, question);
   },
 
 		findAll() {
@@ -46,19 +44,20 @@ module.exports = {
 			`);
 	},
 
-	findById(id) {
+  findById(id) {
     return db.one(`
-      SELECT question_id, questions.question, questions.answer, questions.value,
-			categories.category
-        FROM questions
-        INNER JOIN categories
-        ON questions.category_id=categories.id
-        WHERE questions.id = $1
-    `, id);
+      SELECT * FROM questions WHERE id = $1`, id)
   },
 
 
 }
+    //   SELECT id, question, answer, value,
+    //   categories.category
+    //     FROM questions
+    //     INNER JOIN categories
+    //     ON questions.category_id=categories.id
+    //     WHERE questions.id = $1
+    // , id);
 
 // module.exports.update({
 //   question: "Hey",
