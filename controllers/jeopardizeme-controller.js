@@ -16,6 +16,7 @@ jeopardizemeController.index = (req, res,  next) => {
     // console.log(req.body, 'body');
     jeopardizemeDB.findAll()
       .then((questions) => {
+      	console.log('getAllquestions', questions);
       	res.render('index', {
       		data: questions
       	});
@@ -28,8 +29,12 @@ jeopardizemeController.delete = (req, res) => {
 		// console.log("inside delete function")
 		jeopardizemeDB.destroy(req.params.id)
 			.then(() => {
-				res.redirect('/')
-			});
+				console.log('destroyed!')
+				res.redirect('/');
+			})
+			.catch(err => {
+				res.status(500).send('no bueno');
+			})
 	}
 
 jeopardizemeController.findOne = (req, res) => {

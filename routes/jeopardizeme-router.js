@@ -2,7 +2,7 @@ const express = require('express');
 
 const jeopardizemeController = require('../controllers/jeopardizeme-controller');
 
-const viewsController = require('../controllers/views-controller.js');
+const views = require('../controllers/views-controller.js');
 
 const jeopardizemedb = require('../models/jeopardizeme-DB')
 	// console.log('im here');
@@ -13,7 +13,7 @@ const jeopardizemeRouter = express.Router();
 
 
 
-jeopardizemeRouter.get('/viewquestions', viewsController.search)
+jeopardizemeRouter.get('/', views.search)
 
 jeopardizemeRouter.get('/questions-add', (req, res) => {
 	res.render('./jeopardizeme/questions-add')

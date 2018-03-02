@@ -6,7 +6,7 @@
    <% for (let tacos of data) { %>
   <ul>
       <b><%= tacos.question %></b>
-      <form action="/jeopardize/<%= tacos.id %>?_method=Delete" method="Post">
+      <form action="/jeopardize/<%=tacos.question_id%>?_method=DELETE" method="POST">
       <input type="Submit" value="Delete"/>
       </form>
       <a href="jeopardize/questions-edit/<%=tacos.id%>"><p>edit</p></a>

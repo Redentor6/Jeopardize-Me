@@ -5,9 +5,9 @@ const db = pgp(dbConfig);  // db connection
 module.exports = {
 	save(question) {
 		return db.one(`
-		INSERT INTO questions (question, answer, value)
-		VALUES ($[question], $[answer], $[value])
-		RETURNING *
+		INSERT INTO questions (question, answer, value, category_id)
+		VALUES ($[question], $[answer], $[value], $[category_id])
+		RETURNING *;
 		`, question);
 
 	},
@@ -28,7 +28,8 @@ module.exports = {
       SET
       question = $/question/,
       answer = $/answer/,
-      value = $/value/
+      value = $/value/,
+      category_id = $/category_id/,
       WHERE id = $/id/
       RETURNING *;
       `, question);
@@ -37,28 +38,26 @@ module.exports = {
 		findAll() {
 		// db.any is for 0 or many results, in case DB is empty
 		return db.any(`
-			SELECT questions.id as question_id, questions.question, questions.answer, questions.value,
+			SELECT questions.id AS question_id, questions.question, questions.answer, questions.value,
 			categories.category 
 			FROM questions
-			INNER JOIN categories on questions.category_id=categories.id
+			INNER JOIN categories ON questions.category_id=categories.id
 			ORDER BY questions.value
 			`);
 	},
 
-	findOne(id) {
-		return db.one(`
-			SELECT * 
-			FROM questions 
-			WHERE id= $1`, id);
-	},
+	findById(id) {
+    return db.one(`
+      SELECT question_id, questions.question, questions.answer, questions.value,
+			categories.category
+        FROM questions
+        INNER JOIN categories
+        ON questions.category_id=categories.id
+        WHERE questions.id = $1
+    `, id);
+  },
 
-	findCategories() {
-		return db.one(`
-			SELECT * 
-			FROM categories 
-			ORDER BY id 
-			RETURN *`, id);
-	}
+
 }
 
 // module.exports.update({

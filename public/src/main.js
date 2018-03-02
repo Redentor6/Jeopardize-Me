@@ -38,8 +38,9 @@ $(()=>{
       let inputQuestion = $("<input name='question'>").val(question.question);
       let inputAnswer = $("<input name='answer' type='hidden'>").val(question.answer);
       let inputValue = $("<input name='value'>").val(question.value);
-      let button = $("<input type='submit'>add</input>")
-      $form.append(inputQuestion, inputAnswer, inputValue, button);
+      let inputCategory = $("<input name='category_id'>").val(1);
+      let button = $("<input type='submit'></input>")
+      $form.append(inputQuestion, inputAnswer, inputValue, inputCategory, button);
       // $('body').append("<h1> " + question.question + "</h1>")
       // $('body').append("<h2> " + question.answer + "</h2>")
       // $('body').append("<h3> " + question.value + "</h3>")
