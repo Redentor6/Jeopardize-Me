@@ -2,12 +2,12 @@ const jeopardizemeDB = require('../models/jeopardizeme-DB');
 
 const jeopardizemeController = {};
 
-jeopardizemeController.create = (req, res, next) => {
+jeopardizemeController.create = (req, res, ) => {
     console.log(req.body, 'body');
     jeopardizemeDB.save(req.body)
       .then((question) => {
         res.locals.question = question;
-        next();
+        res.redirect('/')
       })
       .catch(err => next(err));
   }
