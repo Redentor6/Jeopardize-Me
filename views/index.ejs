@@ -1,15 +1,15 @@
 <%include ./partials/boilerplate %>
 	<h1>Jeopardize Me: Bond/Dot Com Edition</h1>
 
-   <button>Get Questions!</button>
-   <a href="/jeopardize/questions-add"> <button type="submit">create question</button></a>
+   <button type="button" class="btn btn-success">Get Questions!</button>
+   <a href="/jeopardize/questions-add"> <button type="submit" class="btn btn-dark">create question</button></a>
    <% for (let tacos of data) { %>
   <ul>
       <b><%= tacos.question %></b>
       <form action="/jeopardize/<%=tacos.question_id%>?_method=DELETE" method="POST">
       <input type="Submit" value="Delete"/>
       </form>
-      <a href="jeopardize/questions-edit/<%=tacos.question_id%>"><p>edit</p></a>
+      <a href="jeopardize/questions-edit/<%=tacos.question_id%>"><button type="submit" class="btn btn-danger">EDIT</button></a>
   </ul>
 <% } %>
 
